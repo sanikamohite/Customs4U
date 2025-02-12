@@ -25,27 +25,6 @@ const AboutUs = () => {
     },
   ];
 
-  const team = [
-    {
-      name: 'Dr. Sarah Chen',
-      role: 'Chief AI Scientist',
-      bio: 'Expert in voice recognition and emotional intelligence algorithms.',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    },
-    {
-      name: 'Mark Anderson',
-      role: 'Head of Engineering',
-      bio: 'Specialized in building scalable AI applications.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    },
-    {
-      name: 'Dr. Emily Rodriguez',
-      role: 'Research Director',
-      bio: 'Leading research in emotional intelligence and music therapy.',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
@@ -79,27 +58,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 bg-gray-800/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-blue-400 text-center mb-12">Meet Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-gray-900/80 p-6 rounded-xl border border-blue-400/30 backdrop-blur-sm">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-blue-400/30"
-                />
-                <h3 className="text-xl font-semibold text-blue-300 text-center mb-2">{member.name}</h3>
-                <p className="text-blue-200 text-center mb-2">{member.role}</p>
-                <p className="text-gray-300 text-center">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -110,16 +68,10 @@ const AboutUs = () => {
             </p>
             <div className="space-x-4">
               <Link
-                to="/signup"
+                to="/record"
                 className="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors"
               >
                 Get Started
-              </Link>
-              <Link
-                to="/demo"
-                className="inline-block border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-lg font-bold hover:bg-blue-400 hover:text-white transition-colors"
-              >
-                Try Demo
               </Link>
             </div>
           </div>

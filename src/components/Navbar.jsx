@@ -1,48 +1,52 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useUser } from '../context/UserContext';
+import { signOutUser } from '../firebase/auth';
+import ProfileDropdown from './ProfileDropdown';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const { user } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await signOutUser();
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   return (
     <nav className="bg-gray-900 border-b border-blue-400/30 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/">
-              <img className="h-16 w-auto" src={logo} alt="Workflow" />
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center">
+              <img className="h-16 w-auto" src={logo} alt="Logo" />
             </Link>
+          </div>
             
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <Link to="/analyze" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
-                  Analyze Voice
+          <div className="hidden md:block flex-1">
+            <div className="ml-6 flex items-baseline justify-end space-x-4">
+              <Link to="/aboutUs" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
+                About Us
+              </Link>
+              <Link to="/contact" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
+                Contact Us
+              </Link>
+              {user && (
+                <Link to="/record" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
+                  Record Audio
                 </Link>
-                <Link to="/music" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
-                  Music Library
-                </Link>
-                <Link to="/dashboard" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
-                  Dashboard
-                </Link>
-                <Link to="/aboutUs" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
-                  About Us
-                </Link>
-                <Link to="/contact" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
-                  Contact Us
-                </Link>
-                {isAuthenticated && (
-                  <Link to="/record" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
-                    Record Audio
-                  </Link>
-                )}
-              </div>
+              )}
             </div>
           </div>
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
-              {!isAuthenticated ? (
+              {!user ? (
                 <>
                   <Link to="/login" className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
                     Login
@@ -52,15 +56,7 @@ const Navbar = () => {
                   </Link>
                 </>
               ) : (
-                <button
-                  onClick={() => {
-                    localStorage.removeItem('isAuthenticated');
-                    window.location.reload();
-                  }}
-                  className="text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Logout
-                </button>
+                <ProfileDropdown user={user} />
               )}
             </div>
           </div>
@@ -92,16 +88,39 @@ const Navbar = () => {
             <Link to="/dashboard" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
               Dashboard
             </Link>
-            <Link to="/login" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
-              Login
+            <Link to="/aboutUs" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
+              About Us
             </Link>
-            <Link to="/signup" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
-              Sign Up
+            <Link to="/contact" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
+              Contact Us
             </Link>
-            {isAuthenticated && (
-              <Link to="/record" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
-                Record Audio
-              </Link>
+            {!user ? (
+              <>
+                <Link to="/login" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
+                  Login
+                </Link>
+                <Link to="/signup" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
+                  Sign Up
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/record" className="block text-gray-300 hover:text-blue-400 px-3 py-2 rounded-md text-base font-medium">
+                  Record Audio
+                </Link>
+                <div className="px-3 py-2">
+                  <ProfileDropdown user={user} />
+                  <button
+                    onClick={handleLogout}
+                    className="text-red-400 hover:text-red-300 px-3 py-2 rounded-md text-base font-medium flex items-center space-x-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              </>
             )}
           </div>
         </div>

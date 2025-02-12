@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import contactBg from '../assets/contactbg.jpg';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -35,23 +36,25 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10"></div>
-        <div className="relative container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-400 mb-6">
-              Get in Touch
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Have questions about our voice emotion detection technology? We're here to help.
-            </p>
-          </div>
+    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src={contactBg}
+          alt="Contact Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
+      </div>
+      <div className="relative container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-400 mb-6">
+            Get in Touch
+          </h1>
+          <p className="text-xl text-gray-300 mb-8">
+            Have questions about our voice emotion detection technology? We're here to help.
+          </p>
         </div>
-      </section>
-
-      {/* Contact Form Section */}
+      </div>
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">

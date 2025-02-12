@@ -20,11 +20,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/music" className="text-gray-300 hover:text-blue-400 text-sm">
-                  Music Library
-                </Link>
-              </li>
-              <li>
                 <Link to="/dashboard" className="text-gray-300 hover:text-blue-400 text-sm">
                   Dashboard
                 </Link>
@@ -40,11 +35,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/api" className="text-gray-300 hover:text-blue-400 text-sm">
-                  API Reference
-                </Link>
-              </li>
-              <li>
                 <Link to="/blog" className="text-gray-300 hover:text-blue-400 text-sm">
                   Blog
                 </Link>
@@ -52,29 +42,24 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-blue-300 font-semibold mb-4">Connect</h4>
+            <h4 className="text-blue-300 font-semibold mb-4">Contact</h4>
             <ul className="space-y-2">
               <li>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 text-sm">
-                  GitHub
+                <a href="mailto:support@voicemood.com" className="text-gray-300 hover:text-blue-400 text-sm">
+                  sanikamohite2905@gmail.com
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 text-sm">
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 text-sm">
-                  LinkedIn
-                </a>
+                <Link to="/contact" className="text-gray-300 hover:text-blue-400 text-sm">
+                  Contact Form
+                </Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-blue-400/30 text-center">
           <p className="text-gray-300 text-sm">
-            {new Date().getFullYear()} VoiceMood. All rights reserved.
+            © {new Date().getFullYear()} The Power Of Voice. All rights reserved.
           </p>
         </div>
       </div>

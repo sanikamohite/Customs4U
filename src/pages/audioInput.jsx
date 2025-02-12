@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import audioBg from '../assets/audiobg.png';
 
 const AudioInput = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -56,8 +57,19 @@ const AudioInput = () => {
   }, [recordings]);
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12">
-      <div className="container mx-auto px-4">
+    <div 
+      className="min-h-screen bg-gray-900 py-12 relative"
+      style={{
+        backgroundImage: `url(${audioBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -70,7 +82,7 @@ const AudioInput = () => {
           </div>
 
           {/* Recording Controls */}
-          <div className="bg-gray-800/50 p-8 rounded-xl border border-blue-400/30 backdrop-blur-sm shadow-lg mb-8">
+          <div className="bg-gray-800/70 p-8 rounded-xl border border-blue-400/30 backdrop-blur-md shadow-lg mb-8">
             <div className="flex justify-center space-x-4 mb-8">
               <button
                 onClick={startRecording}
@@ -123,7 +135,7 @@ const AudioInput = () => {
 
           {/* Recordings List */}
           {recordings.length > 0 && (
-            <div className="bg-gray-800/50 p-8 rounded-xl border border-blue-400/30 backdrop-blur-sm shadow-lg">
+            <div className="bg-gray-800/70 p-8 rounded-xl border border-blue-400/30 backdrop-blur-md shadow-lg">
               <h3 className="text-xl font-semibold text-blue-400 mb-6">
                 Your Recordings
               </h3>
@@ -131,7 +143,7 @@ const AudioInput = () => {
                 {recordings.map((audioUrl, index) => (
                   <div
                     key={index}
-                    className="p-4 bg-gray-900/50 rounded-lg border border-blue-400/20"
+                    className="p-4 bg-gray-900/70 rounded-lg border border-blue-400/20"
                   >
                     <audio
                       controls
