@@ -5,95 +5,96 @@ const Home = () => {
     <div className="space-y-16">
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center">
-        <div className="absolute inset-0 bg-[url('https://t4.ftcdn.net/jpg/04/86/18/57/360_F_486185798_yL4lwLEGEkIyDWdrUP7AXSvWxsYd28I2.jpg')] bg-cover bg-center">
-          <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-[url('https://img.freepik.com/free-vector/abstract-technology-particle-background_52683-25766.jpg')] bg-cover bg-center">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         </div>
         <div className="relative container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="font-gaming text-5xl md:text-6xl text-gaming-primary mb-6">
-              Welcome to Customs4U
+            <h1 className="text-5xl md:text-6xl text-blue-400 font-bold mb-6">
+              The Power Of Voice
             </h1>
-            <p className="text-xl text-gaming-light mb-8">
-              Join the ultimate gaming tournaments and custom matches. Compete with the best players and win exciting prizes!
+            <p className="text-xl text-gray-200 mb-8">
+              Discover the emotional intelligence of AI through voice analysis. Our advanced system detects emotions in real-time, creating a personalized experience through mood-based music recommendations.
             </p>
             <div className="space-x-4">
               <Link
-                to="/tournaments"
-                className="inline-block bg-gaming-primary text-white px-8 py-3 rounded-lg font-gaming hover:bg-gaming-secondary transition-colors"
+                to="/analyze"
+                className="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors"
               >
-                Join Tournament
+                Analyze Voice
               </Link>
               <Link
-                to="/games"
-                className="inline-block border-2 border-gaming-primary text-gaming-primary px-8 py-3 rounded-lg font-gaming hover:bg-gaming-primary hover:text-white transition-colors"
+                to="/demo"
+                className="inline-block border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-lg font-bold hover:bg-blue-400 hover:text-white transition-colors"
               >
-                Explore Games
+                Try Demo
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Games */}
+      {/* Featured Capabilities */}
       <section className="container mx-auto px-4">
-        <h2 className="font-gaming text-3xl text-gaming-primary mb-8">Featured Games</h2>
+        <h2 className="text-3xl text-blue-400 font-bold mb-8">Emotion Detection Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
-              title: 'BGMI',
-              image: 'https://bgmi.in/wp-content/uploads/2023/10/bgmi-apk-update.webp',
-              link: '/bgmi-customs',
+              title: 'Mood Analysis',
+              image: 'https://img.freepik.com/free-vector/gradient-emotion-rating-concept_23-2148946168.jpg',
+              description: 'Detect Happy, Sad, Angry, and Neutral emotions',
             },
             {
-              title: 'Free Fire',
-              image: 'https://images.hindustantimes.com/tech/img/2022/03/28/960x540/Garena_FF_Max_1646187536940_1648429367594.jpg',
-              link: '/games',
+              title: 'Music Matching',
+              image: 'https://img.freepik.com/free-vector/musical-notes-frame-with-text-space_1017-32857.jpg',
+              description: 'AI-powered music recommendations based on mood',
             },
             {
-              title: 'Valorant',
-              image: 'https://preview.redd.it/tuhfkqx6t6v51.png?width=5874&format=png&auto=webp&s=fcd0ab00b82d0b45c2ee76fc4c4bc2d8b1573c27',
-              link: '/games',
+              title: 'Voice Processing',
+              image: 'https://img.freepik.com/free-vector/voice-recognition-concept-illustration_114360-7861.jpg',
+              description: 'Advanced NLP for accurate emotion detection',
             },
-          ].map((game) => (
-            <Link
-              key={game.title}
-              to={game.link}
-              className="group relative h-64 rounded-lg overflow-hidden"
+          ].map((feature) => (
+            <div
+              key={feature.title}
+              className="group relative h-80 rounded-xl overflow-hidden bg-gray-900 p-6 border border-blue-400/30"
             >
-              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors"></div>
-              <img
-                src={game.image}
-                alt={game.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-gaming text-2xl text-white">{game.title}</h3>
+              <div className="h-40 mb-4 overflow-hidden rounded-lg">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </Link>
+              <h3 className="text-2xl text-blue-400 font-bold mb-2">{feature.title}</h3>
+              <p className="text-gray-300">{feature.description}</p>
+            </div>
           ))}
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="container mx-auto px-4">
-        <h2 className="font-gaming text-3xl text-gaming-primary mb-8">Ready to Compete?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="container mx-auto px-4 bg-gray-900 rounded-2xl p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="text-center md:text-left">
-            <p className="text-gaming-light text-lg mb-4">
-              Join our community of gamers and start competing in custom rooms and tournaments.
+            <h2 className="text-3xl text-blue-400 font-bold mb-4">Experience the Future of Voice Analysis</h2>
+            <p className="text-gray-300 text-lg mb-6">
+              Join our platform to unlock the power of emotion detection through voice analysis. Perfect for personal use, research, and development.
             </p>
             <Link
-              to="/login"
-              className="bg-gaming-primary text-white px-4 py-2 rounded font-gaming text-sm hover:bg-gaming-secondary transition-colors"
+              to="/register"
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-600 transition-colors"
             >
-              Login/Register
+              Get Started
             </Link>
           </div>
-          <img
-            src="/images/gaming-setup.jpg"
-            alt="Gaming Setup"
-            className="w-full h-full object-cover rounded-lg"
-          />
+          <div className="relative h-64">
+            <img
+              src="https://img.freepik.com/free-vector/voice-recognition-concept-landing-page_23-2148289011.jpg"
+              alt="AI Voice Analysis"
+              className="w-full h-full object-cover rounded-lg"
+            />
+          </div>
         </div>
       </section>
     </div>

@@ -23,15 +23,15 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center">
-      <div className="max-w-md w-full space-y-8 bg-gaming-dark p-8 rounded-lg border border-gaming-primary">
+    <div className="flex items-center justify-center py-12">
+      <div className="max-w-md w-full space-y-8 bg-gray-900 p-8 rounded-xl border border-blue-400/30 shadow-lg backdrop-blur-sm">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-gaming text-gaming-primary">
-            Create your account
+          <h2 className="mt-6 text-center text-3xl font-bold text-blue-400">
+            Join VoiceMood
           </h2>
-          <p className="mt-2 text-center text-sm text-gaming-light">
+          <p className="mt-2 text-center text-sm text-gray-300">
             Already have an account?{' '}
-            <Link to="/login" className="text-gaming-secondary hover:text-gaming-primary">
+            <Link to="/login" className="text-blue-400 hover:text-blue-300 font-medium">
               Sign in
             </Link>
           </p>
@@ -39,7 +39,7 @@ const Signup = () => {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="username" className="sr-only">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-1">
                 Username
               </label>
               <input
@@ -47,14 +47,14 @@ const Signup = () => {
                 name="username"
                 type="text"
                 required
-                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gaming-primary bg-black placeholder-gray-500 text-gaming-light focus:outline-none focus:ring-gaming-secondary focus:border-gaming-secondary focus:z-10 sm:text-sm"
-                placeholder="Username"
+                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-blue-400/30 bg-gray-800/50 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors sm:text-sm"
+                placeholder="Choose a username"
                 value={formData.username}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="email" className="sr-only">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                 Email address
               </label>
               <input
@@ -62,14 +62,14 @@ const Signup = () => {
                 name="email"
                 type="email"
                 required
-                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gaming-primary bg-black placeholder-gray-500 text-gaming-light focus:outline-none focus:ring-gaming-secondary focus:border-gaming-secondary focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-blue-400/30 bg-gray-800/50 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors sm:text-sm"
+                placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1">
                 Password
               </label>
               <input
@@ -77,14 +77,14 @@ const Signup = () => {
                 name="password"
                 type="password"
                 required
-                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gaming-primary bg-black placeholder-gray-500 text-gaming-light focus:outline-none focus:ring-gaming-secondary focus:border-gaming-secondary focus:z-10 sm:text-sm"
-                placeholder="Password"
+                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-blue-400/30 bg-gray-800/50 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors sm:text-sm"
+                placeholder="Create a password"
                 value={formData.password}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="sr-only">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 mb-1">
                 Confirm Password
               </label>
               <input
@@ -92,8 +92,8 @@ const Signup = () => {
                 name="confirmPassword"
                 type="password"
                 required
-                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-gaming-primary bg-black placeholder-gray-500 text-gaming-light focus:outline-none focus:ring-gaming-secondary focus:border-gaming-secondary focus:z-10 sm:text-sm"
-                placeholder="Confirm Password"
+                className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-blue-400/30 bg-gray-800/50 placeholder-gray-400 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors sm:text-sm"
+                placeholder="Confirm your password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
               />
@@ -103,11 +103,22 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gaming-primary hover:bg-gaming-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gaming-secondary"
+              className="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
             >
               Create Account
             </button>
           </div>
+
+          <p className="text-xs text-gray-400 text-center mt-4">
+            By creating an account, you agree to our{' '}
+            <Link to="/terms" className="text-blue-400 hover:text-blue-300">
+              Terms of Service
+            </Link>{' '}
+            and{' '}
+            <Link to="/privacy" className="text-blue-400 hover:text-blue-300">
+              Privacy Policy
+            </Link>
+          </p>
         </form>
       </div>
     </div>

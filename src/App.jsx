@@ -7,13 +7,17 @@ import Tournaments from './pages/Tournaments';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import BGMICustoms from './pages/BGMICustoms';
+import AboutUs from './pages/aboutUs';
+import ContactUs from './pages/contactUs';
+import AudioInput from './pages/audioInput';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gaming-dark text-gaming-light font-body">
+      <div className="flex flex-col min-h-screen bg-gray-900">
         <Navbar />
-        <main className="container mx-auto px-4 py-8">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/games" element={<Games />} />
@@ -21,6 +25,16 @@ function App() {
             <Route path="/bgmi-customs" element={<BGMICustoms />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route
+              path="/record"
+              element={
+                <ProtectedRoute>
+                  <AudioInput />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </main>
         <Footer />
